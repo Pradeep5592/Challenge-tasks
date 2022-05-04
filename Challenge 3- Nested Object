@@ -1,0 +1,16 @@
+Challenge - nested Object
+
+String Json= {“a”:{“b”:{“c”:”d”}}}
+
+  JSONObject obj = new JSONObject(JSON);
+  Iterator iterator = obj.keys();
+  String key = null;
+  System.out.println("keys");
+  while (iterator.hasNext()) {
+      key = (String) iterator.next();
+      System.out.pritnln(key+"/");
+  }
+
+  output
+  Keys
+  a/b/c

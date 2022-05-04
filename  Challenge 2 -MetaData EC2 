@@ -1,0 +1,38 @@
+Query the meta data of AWS EC2 instances
+
+First Approach--
+Bash
+
+Use curl command
+
+$ curl http://ec2_ip_address/latest/meta-data/
+
+will give list of the metadata keys available for EC2 instances
+
+For eg- get public ip by below curl command
+curl http://169.254.169.254/latest/meta-data/public-ipv4
+
+and hostname by
+curl http://169.254.169.254/latest/meta-data/hostname
+
+for instance-id
+$ curl -sL http://169.254.169.254/latest/meta-data/instance-id
+
+
+For printing json output
+$ curl http://169.254.169.254/latest/meta-data/iam/info | jq
+or
+curl http://169.254.169.254/latest/meta-data/iam/info  | json_pp
+
+or
+curl http://169.254.169.254/latest/meta-data/iam/info | jq -r .(fieldName)
+
+
+
+Second Approach
+
+Using Java SDK and using  Class EC2MetadataUtils
+eg-
+String instanceId = EC2MetadataUtils.getInstanceId();
+
+EC2MetadataUtils.getData("/latest/meta-data/public-ipv4");
